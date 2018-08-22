@@ -1,4 +1,4 @@
-package br.com.JMessage.message;
+package br.com.d3z40.message;
 
 public class OlaMundo {
   public static void main(String[] args) {
