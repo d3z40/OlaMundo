@@ -46,4 +46,4 @@ Bem Vindo ao Github!
 ```
 
 ## Observação
-Ao executar, não é necessário pôr nenhuma extensão do arquivo (java ou class), pois só é necessário o nome completo da classe.
+Ao executar, não é necessário informar nenhuma extensão do arquivo (java ou class), pois só é necessário o nome completo da classe.
