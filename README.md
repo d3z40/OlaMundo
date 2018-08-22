@@ -9,16 +9,40 @@ Olá Mundo em [Java](https://www.java.com/).
 </br>
 Aplicação simples para exibição de mensagem.
 
-## Compilando via comando
+## Acessando o diretório
+``` bash
+cd OlaMundo/
+```
+## Criando o diretório /bin
+``` bash
+#mkdir -v bin/
+```
 
+## Acessando o diretório /src (source-code)
+``` bash
+cd src/
+```
+
+## Compilando via comando
 Antes de executar, deve-se compilar com o seguinte comando.
 ``` bash
-javac OlaMundo.java
+#javac br/com/d3z40/message/OlaMundo.java -d ../bin/
+```
+
+## Acessando o diretório /bin (binary)
+``` bash
+cd ../bin/
 ```
 
 ## Executando via comando
 ``` bash
-java OlaMundo
+#java br.com.d3z40.message.OlaMundo
+```
+
+## Saída via console
+``` bash
+Olá Mundo!
+Bem Vindo ao Github!
 ```
 
 ## Observação
