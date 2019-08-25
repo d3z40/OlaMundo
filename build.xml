@@ -36,7 +36,9 @@
     
 	<target depends="clean" name="cleanall"/>
     
-	<target depends="build-subprojects,build-project,jar" name="build"/>
+	<target depends="build-subprojects,build-project,jar" name="build">
+		<echo>Build finalizado com sucesso!!!</echo>
+	</target>
     
 	<target name="build-subprojects"/>
     
