@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="OlaMundo">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../opt/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+	<property name="src" value="${basedir}/src"/>
+	<property name="bin" value="${basedir}/bin/"/>
+	<property name="dist" value="${basedir}/dist/"/>
+	
+    <path id="OlaMundo.classpath">
+        <pathelement location="bin"/>
+    </path>
+	
+    <target name="init">
+        <mkdir dir="${bin}"/>
+    	<mkdir dir="${dist}"/>
+        <copy includeemptydirs="false" todir="${bin}">
+            <fileset dir="${src}">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    
+	<target name="clean">
+        <delete dir="${bin}"/>
+    </target>
+    
+	<target depends="clean" name="cleanall"/>
+    
+	<target depends="build-subprojects,build-project,jar" name="build"/>
+    
+	<target name="build-subprojects"/>
+    
+	<target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="${bin}" includeantruntime="false" source="${source}" target="${target}">
+            <src path="${src}"/>
+            <classpath refid="OlaMundo.classpath"/>
+        </javac>
+    </target>
+    
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    
+	<target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        
+		<unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    
+	<target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    
+	<target name="jar" depends="OlaMundo" description="cria um .jar file ">
+		<echo>Criando .jar</echo>
+		<jar destfile="${dist}${ant.project.name}.jar" basedir="${bin}">
+			<manifest>
+				<!-- Quem esta criando o jar -->
+			    <attribute name="Built-By" value="${user.name}"/>
+			    
+				<!-- Informações sobre o projeto -->
+			    <attribute name="Implementation-Vendor" value="d3z40 bz"/>
+			    <attribute name="Implementation-Title" value="OlaMundo"/>
+			    <attribute name="Implementation-Version" value="1.0.0"/>
+				
+				<!-- Classe Principal -->
+				<attribute name="Main-Class" value="br.com.d3z40.message.OlaMundo"/>
+			</manifest>
+		</jar>	
+	</target>
+	
+	<target name="OlaMundo">
+        <java classname="br.com.d3z40.message.OlaMundo" failonerror="true" fork="yes">
+            <classpath refid="OlaMundo.classpath"/>
+        </java>
+    </target>
+</project>
